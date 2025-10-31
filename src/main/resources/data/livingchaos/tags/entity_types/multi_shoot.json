@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:ender_dragon",
+    "minecraft:blaze",
+    "minecraft:skeleton",
+    "minecraft:ghast",
+    "minecraft:drown",
+    "minecraft:wither"
+  ]
+}

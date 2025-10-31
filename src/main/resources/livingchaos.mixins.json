@@ -1,0 +1,25 @@
+{
+  "required": true,
+  "package": "me.kall.livingchaos.mixin",
+  "plugin": "me.kall.livingchaos.mixin.MixinConfigPlugin",
+  "compatibilityLevel": "JAVA_8",
+  "overwrites": {
+    "conformVisibility": false
+  },
+  "minVersion": "0.8",
+  "client": [
+  ],
+  "mixins": [
+    "api.EntityMixin",
+    "api.MobEffectInstanceAccessor",
+    "deadrattle.ExplosionMixin",
+    "deadrattle.LivingEntityMixin",
+    "deathlock.LivingEntityMixin",
+    "effectmirror.MobMixin",
+    "multishoot.LivingEntityMixin",
+    "multishoot.ProjectileMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
