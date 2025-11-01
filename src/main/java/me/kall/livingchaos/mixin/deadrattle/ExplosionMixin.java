@@ -2,10 +2,11 @@ package me.kall.livingchaos.mixin.deadrattle;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import me.kall.livingchaos.api.Exploder;
-import me.kall.livingchaos.api.IExplosion;
+import me.kall.livingchaos.api.duck.Exploder;
+import me.kall.livingchaos.api.duck.IExplosion;
 import me.kall.livingchaos.config.ChaosConfig;
 import me.kall.livingchaos.event.deadrattle.DeadRattle;
+import me.kall.livingchaos.event.deadrattle.types.Explosive;
 import me.kall.livingchaos.init.ModEffects;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
@@ -29,8 +30,9 @@ public class ExplosionMixin implements IExplosion {
     private boolean onHurtEntity(Entity entity, DamageSource damageSource, float amount, Operation<Boolean> original) {
         if (this.source instanceof Exploder exploder && exploder.chaos$isExploder() && entity instanceof LivingEntity living) {
             DeadRattle.updateEffect(living, ModEffects.RESISTANCE_REDUCTION.get());
-            if (!this.chaos$delivered() && exploder.chaos$deliveryCount() <= ChaosConfig.DEAD_RATTLE_DELIVERY_LIMIT && exploder instanceof LivingEntity dead && dead.level() instanceof ServerLevel level) {
-                DeadRattle.Explosion.delivery(level, dead, exploder, this);
+            if (!this.chaos$delivered() && exploder.chaos$deliveryCount() <= ChaosConfig.EXPLOSIVE_DELIVERY_LIMIT.get() && exploder instanceof LivingEntity dead && dead.level() instanceof ServerLevel level) {
+                Explosive.delivery(level, dead, exploder);
+                this.chaos$setDelivered(true);
             }
         }
         return original.call(entity, damageSource, amount);

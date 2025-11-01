@@ -2,11 +2,11 @@ package me.kall.livingchaos.mixin.deathlock;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import me.kall.livingchaos.api.Undamageable;
+import me.kall.livingchaos.api.duck.Undamageable;
 import me.kall.livingchaos.config.ChaosConfig;
 import me.kall.livingchaos.network.NetworkManager;
 import me.kall.livingchaos.network.packets.UndamageableUpdatePacket;
-import me.kall.livingchaos.tag.LivingTags;
+import me.kall.livingchaos.init.ModTags;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -32,7 +32,7 @@ public abstract class LivingEntityMixin extends Entity implements Undamageable {
 
     @WrapOperation(method = "actuallyHurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;setHealth(F)V"))
     private void onDie(LivingEntity entity, float health, Operation<Void> original) {
-        if (health <= 0.0F && entity.getType().is(LivingTags.DEATH_LOCK) && !this.chaos$deathLocked()) {
+        if (health <= 0.0F && entity.getType().is(ModTags.DEATH_LOCK) && !this.chaos$deathLocked()) {
             original.call(entity, 0.1F);
             this.chaos$setUndamageable(true);
         } else {
@@ -61,7 +61,7 @@ public abstract class LivingEntityMixin extends Entity implements Undamageable {
     @Override
     public void chaos$setUndamageable(boolean undamageable) {
         if (this.chaos$deathLocked()) return;
-        this.chaos$isUndamageableTicks = undamageable ? 20 * ChaosConfig.DEATH_LOCK_DURATION : -1;
+        this.chaos$isUndamageableTicks = undamageable ? 20 * ChaosConfig.DEATH_LOCK_SECONDS.get() : -1;
         if (this.chaos$isUndamageable() && this.level() instanceof ServerLevel) {
             NetworkManager.INSTANCE.send(PacketDistributor.TRACKING_ENTITY.with(() -> this), new UndamageableUpdatePacket(true, this.getId()));
         }

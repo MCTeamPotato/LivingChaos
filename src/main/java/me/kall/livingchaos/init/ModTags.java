@@ -1,4 +1,4 @@
-package me.kall.livingchaos.tag;
+package me.kall.livingchaos.init;
 
 import me.kall.livingchaos.LivingChaos;
 import net.minecraft.core.registries.Registries;
@@ -7,7 +7,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import org.jetbrains.annotations.NotNull;
 
-public class LivingTags {
+public class ModTags {
     public static final TagKey<EntityType<?>> DEATH_LOCK = init("death_lock");
     public static final TagKey<EntityType<?>> EFFECT_MIRROR = init("effect_mirror");
     public static final TagKey<EntityType<?>> MULTI_SHOOT = init("multi_shoot");

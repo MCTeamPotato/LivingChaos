@@ -1,4 +1,4 @@
-package me.kall.livingchaos.api;
+package me.kall.livingchaos.api.duck;
 
 public interface Undamageable {
     boolean chaos$isUndamageable();

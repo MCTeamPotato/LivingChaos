@@ -1,6 +1,6 @@
 package me.kall.livingchaos.mixin.multishoot;
 
-import me.kall.livingchaos.api.IProjectile;
+import me.kall.livingchaos.api.duck.IProjectile;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.projectile.Projectile;
 import org.jetbrains.annotations.NotNull;

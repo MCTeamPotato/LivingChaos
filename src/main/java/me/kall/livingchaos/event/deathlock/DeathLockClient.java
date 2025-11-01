@@ -2,8 +2,7 @@ package me.kall.livingchaos.event.deathlock;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import me.kall.livingchaos.LivingChaos;
-import me.kall.livingchaos.api.Undamageable;
+import me.kall.livingchaos.api.duck.Undamageable;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -11,15 +10,11 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderLivingEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import org.jetbrains.annotations.NotNull;
 
-@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = LivingChaos.MOD_ID)
 public class DeathLockClient {
-    @SubscribeEvent
-    public static void renderTotem(RenderLivingEvent.Post<LivingEntity, EntityModel<LivingEntity>> event) {
+    public static void renderTotem(RenderLivingEvent.@NotNull Post<LivingEntity, EntityModel<LivingEntity>> event) {
         LivingEntity entity = event.getEntity();
         if (entity instanceof Undamageable undamageable && undamageable.chaos$isUndamageable()) {
             PoseStack poseStack = event.getPoseStack();

@@ -52,10 +52,12 @@ public class ParticlePacket {
 
         public static final byte DEATH_LOCK = 0;
         public static final byte MULTI_SHOOT = 1;
+        public static final byte PARENT = 2;
 
         static {
             PARTICLES.put(DEATH_LOCK, ParticleTypes.HAPPY_VILLAGER);
             PARTICLES.put(MULTI_SHOOT, ParticleTypes.ENTITY_EFFECT);
+            PARTICLES.put(PARENT, ParticleTypes.ANGRY_VILLAGER);
         }
     }
 }

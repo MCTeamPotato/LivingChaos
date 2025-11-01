@@ -2,13 +2,12 @@ package me.kall.livingchaos.event.multishoot;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import me.kall.livingchaos.LivingChaos;
-import me.kall.livingchaos.api.IProjectile;
-import me.kall.livingchaos.api.Shooter;
+import me.kall.livingchaos.api.duck.IProjectile;
+import me.kall.livingchaos.api.duck.Shooter;
 import me.kall.livingchaos.config.ChaosConfig;
 import me.kall.livingchaos.network.NetworkManager;
 import me.kall.livingchaos.network.packets.ParticlePacket;
-import me.kall.livingchaos.tag.LivingTags;
+import me.kall.livingchaos.init.ModTags;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
@@ -20,8 +19,6 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.PacketDistributor;
 import org.jetbrains.annotations.NotNull;
 
@@ -29,14 +26,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-@Mod.EventBusSubscriber(modid = LivingChaos.MOD_ID)
 public class MultiShoot {
     private static final Int2ObjectMap<List<Runnable>> TASKS = new Int2ObjectOpenHashMap<>();
 
-    @SubscribeEvent
     public static void onProjectileJoin(@NotNull EntityJoinLevelEvent event) {
-        if (event.getLevel() instanceof ServerLevel level && event.getEntity() instanceof Projectile projectile && projectile.getOwner() instanceof LivingEntity owner) {
-            if (!((IProjectile)projectile).chaos$isSource() || !owner.getType().is(LivingTags.MULTI_SHOOT) || !((Shooter)owner).chaos$canGatling()) return;
+        if (event.getLevel() instanceof ServerLevel level && !event.isCanceled() && event.getEntity() instanceof Projectile projectile && projectile.getOwner() instanceof LivingEntity owner) {
+            if (!((IProjectile)projectile).chaos$isSource() || !owner.getType().is(ModTags.MULTI_SHOOT) || !((Shooter)owner).chaos$canGatling()) return;
 
             int tickCount = level.getServer().getTickCount();
             EntityType<?> type = projectile.getType();
@@ -63,8 +58,8 @@ public class MultiShoot {
             }
 
             level.getServer().execute(() -> {
-                for (int i = 0; i < ThreadLocalRandom.current().nextInt(ChaosConfig.MULTI_SHOOT_MIN_COUNT, ChaosConfig.MULTI_SHOOT_MAX_COUNT + 1); i++) {
-                    TASKS.computeIfAbsent(tickCount + ChaosConfig.MULTI_SHOOT_INTERVAL * (i + 1), key -> new ArrayList<>()).add(() -> genTask(type, owner, xOffset, yOffset, zOffset, deltaMovement, lastXPower, lastYPower, lastZPower));
+                for (int i = 0; i < ThreadLocalRandom.current().nextInt(ChaosConfig.MULTI_SHOOT_MIN_COUNT.get(), ChaosConfig.MULTI_SHOOT_MAX_COUNT.get() + 1); i++) {
+                    TASKS.computeIfAbsent(tickCount + ChaosConfig.MULTI_SHOOT_INTERVAL.get() * (i + 1), key -> new ArrayList<>()).add(() -> genTask(type, owner, xOffset, yOffset, zOffset, deltaMovement, lastXPower, lastYPower, lastZPower));
                 }
             });
 
@@ -102,7 +97,6 @@ public class MultiShoot {
         }
     }
 
-    @SubscribeEvent
     public static void onTick(TickEvent.@NotNull ServerTickEvent event) {
         if (event.phase.equals(TickEvent.Phase.START)) {
             int tickCount = event.getServer().getTickCount();

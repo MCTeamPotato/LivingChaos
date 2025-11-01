@@ -1,6 +1,6 @@
 package me.kall.livingchaos.mixin.effectmirror;
 
-import me.kall.livingchaos.tag.LivingTags;
+import me.kall.livingchaos.init.ModTags;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,6 +19,6 @@ public abstract class MobMixin {
     private void onTargetChange(LivingEntity target, CallbackInfo ci) {
         if (this.target == null) return;
         Mob entity = (Mob) (Object) this;
-        if (entity.getType().is(LivingTags.EFFECT_MIRROR)) this.target.getActiveEffects().forEach(entity::addEffect);
+        if (entity.getType().is(ModTags.EFFECT_MIRROR)) this.target.getActiveEffects().forEach(entity::addEffect);
     }
 }

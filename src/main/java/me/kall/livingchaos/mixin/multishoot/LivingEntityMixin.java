@@ -1,6 +1,6 @@
 package me.kall.livingchaos.mixin.multishoot;
 
-import me.kall.livingchaos.api.Shooter;
+import me.kall.livingchaos.api.duck.Shooter;
 import me.kall.livingchaos.config.ChaosConfig;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;
@@ -22,7 +22,7 @@ public abstract class LivingEntityMixin implements Shooter {
 
     @Override
     public void chaos$setCanGatling(boolean canGatling) {
-        this.chaos$canGatlingCooldown = canGatling ? -1 : ChaosConfig.MULTI_SHOOT_COOL_DOWN * 20;
+        this.chaos$canGatlingCooldown = canGatling ? -1 : ChaosConfig.MULTI_SHOOT_COOL_DOWN.get() * 20;
     }
 
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;detectEquipmentUpdates()V", shift = At.Shift.AFTER))

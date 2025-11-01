@@ -11,7 +11,7 @@
   ],
   "mixins": [
     "api.EntityMixin",
-    "api.MobEffectInstanceAccessor",
+    "api.EntityTypeMixin",
     "deadrattle.ExplosionMixin",
     "deadrattle.LivingEntityMixin",
     "deathlock.LivingEntityMixin",
