@@ -19,6 +19,8 @@ public abstract class MobMixin {
     private void onTargetChange(LivingEntity target, CallbackInfo ci) {
         if (this.target == null) return;
         Mob entity = (Mob) (Object) this;
-        if (entity.getType().is(ModTags.EFFECT_MIRROR)) this.target.getActiveEffects().forEach(entity::addEffect);
+        if (entity.getType().is(ModTags.EFFECT_MIRROR)) {
+            this.target.getActiveEffects().forEach(entity::addEffect);
+        }
     }
 }
