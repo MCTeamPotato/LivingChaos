@@ -1,4 +1,4 @@
-package me.kall.livingchaos.api.duck;
+package me.kall.livingchaos.api.ext;
 
 import me.kall.livingchaos.LivingChaos;
 import net.minecraft.resources.ResourceLocation;

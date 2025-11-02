@@ -7,8 +7,6 @@
     "conformVisibility": false
   },
   "minVersion": "0.8",
-  "client": [
-  ],
   "mixins": [
     "api.EntityMixin",
     "api.EntityTypeMixin",
@@ -16,6 +14,7 @@
     "deadrattle.LivingEntityMixin",
     "deathlock.LivingEntityMixin",
     "effectmirror.MobMixin",
+    "greedy.ItemEntityMixin",
     "multishoot.LivingEntityMixin",
     "multishoot.ProjectileMixin"
   ],

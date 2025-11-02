@@ -1,6 +1,6 @@
 package me.kall.livingchaos.event.deathlock;
 
-import me.kall.livingchaos.api.duck.Undamageable;
+import me.kall.livingchaos.api.ext.Undamageable;
 import me.kall.livingchaos.config.ChaosConfig;
 import me.kall.livingchaos.network.NetworkManager;
 import me.kall.livingchaos.network.packets.ParticlePacket;

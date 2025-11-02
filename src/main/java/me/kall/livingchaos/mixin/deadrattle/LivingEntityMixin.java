@@ -1,7 +1,7 @@
 package me.kall.livingchaos.mixin.deadrattle;
 
-import me.kall.livingchaos.api.duck.Exploder;
-import me.kall.livingchaos.api.duck.ParentBear;
+import me.kall.livingchaos.api.ext.Exploder;
+import me.kall.livingchaos.api.ext.ParentBear;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;

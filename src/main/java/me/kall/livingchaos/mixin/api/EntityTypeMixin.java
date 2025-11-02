@@ -1,6 +1,6 @@
 package me.kall.livingchaos.mixin.api;
 
-import me.kall.livingchaos.api.duck.IEntityType;
+import me.kall.livingchaos.api.ext.IEntityType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.registries.ForgeRegistries;

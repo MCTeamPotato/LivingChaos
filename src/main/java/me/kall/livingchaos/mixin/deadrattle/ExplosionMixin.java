@@ -2,8 +2,8 @@ package me.kall.livingchaos.mixin.deadrattle;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import me.kall.livingchaos.api.duck.Exploder;
-import me.kall.livingchaos.api.duck.IExplosion;
+import me.kall.livingchaos.api.ext.Exploder;
+import me.kall.livingchaos.api.ext.IExplosion;
 import me.kall.livingchaos.config.ChaosConfig;
 import me.kall.livingchaos.event.deadrattle.DeadRattle;
 import me.kall.livingchaos.event.deadrattle.types.Explosive;

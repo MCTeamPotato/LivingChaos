@@ -5,7 +5,7 @@ import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.ints.IntSets;
 import me.kall.livingchaos.LivingChaos;
 import me.kall.livingchaos.api.EntityTracker;
-import me.kall.livingchaos.api.duck.Exploder;
+import me.kall.livingchaos.api.ext.Exploder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;

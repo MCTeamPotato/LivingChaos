@@ -2,7 +2,7 @@ package me.kall.livingchaos.mixin.deathlock;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import me.kall.livingchaos.api.duck.Undamageable;
+import me.kall.livingchaos.api.ext.Undamageable;
 import me.kall.livingchaos.config.ChaosConfig;
 import me.kall.livingchaos.network.NetworkManager;
 import me.kall.livingchaos.network.packets.UndamageableUpdatePacket;

@@ -1,6 +1,6 @@
 package me.kall.livingchaos.network.packets;
 
-import me.kall.livingchaos.api.duck.Undamageable;
+import me.kall.livingchaos.api.ext.Undamageable;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;

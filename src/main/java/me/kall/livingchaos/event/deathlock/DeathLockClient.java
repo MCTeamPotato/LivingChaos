@@ -2,7 +2,7 @@ package me.kall.livingchaos.event.deathlock;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import me.kall.livingchaos.api.duck.Undamageable;
+import me.kall.livingchaos.api.ext.Undamageable;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;

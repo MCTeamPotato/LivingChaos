@@ -7,7 +7,7 @@ import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import me.kall.livingchaos.api.duck.IEntityType;
+import me.kall.livingchaos.api.ext.IEntityType;
 import me.kall.livingchaos.api.event.EntityChunkChangeEvent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;

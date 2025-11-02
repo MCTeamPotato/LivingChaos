@@ -9,6 +9,7 @@ import me.kall.livingchaos.event.deadrattle.types.Rubbish;
 import me.kall.livingchaos.event.deathlock.DeathLock;
 import me.kall.livingchaos.event.deathlock.DeathLockClient;
 import me.kall.livingchaos.event.effectmirror.EffectMirror;
+import me.kall.livingchaos.event.greedy.Greedy;
 import me.kall.livingchaos.event.multishoot.MultiShoot;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -28,8 +29,9 @@ public class ModEvents {
         forgeBus.addListener(EffectMirror::onLivingDamage);
         forgeBus.addListener(EventPriority.LOWEST, MultiShoot::onProjectileJoin);
         forgeBus.addListener(MultiShoot::onTick);
-
-        modBus.addListener(Rubbish::setup);
+        forgeBus.addListener(Greedy::onItemPick);
+        forgeBus.addListener(EventPriority.LOWEST, Greedy::onLivingTick);
+        forgeBus.addListener(Rubbish::setup);
 
         if (FMLLoader.getDist().isClient()) {
             forgeBus.addListener(DeathLockClient::renderTotem);

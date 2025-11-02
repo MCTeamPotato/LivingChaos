@@ -2,8 +2,8 @@ package me.kall.livingchaos.event.multishoot;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import me.kall.livingchaos.api.duck.IProjectile;
-import me.kall.livingchaos.api.duck.Shooter;
+import me.kall.livingchaos.api.ext.IProjectile;
+import me.kall.livingchaos.api.ext.Shooter;
 import me.kall.livingchaos.config.ChaosConfig;
 import me.kall.livingchaos.network.NetworkManager;
 import me.kall.livingchaos.network.packets.ParticlePacket;

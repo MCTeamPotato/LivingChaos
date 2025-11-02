@@ -1,4 +1,4 @@
-package me.kall.livingchaos.api.duck;
+package me.kall.livingchaos.api.ext;
 
 public interface IProjectile {
     boolean chaos$isSource();

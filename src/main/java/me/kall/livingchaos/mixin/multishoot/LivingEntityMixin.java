@@ -1,6 +1,6 @@
 package me.kall.livingchaos.mixin.multishoot;
 
-import me.kall.livingchaos.api.duck.Shooter;
+import me.kall.livingchaos.api.ext.Shooter;
 import me.kall.livingchaos.config.ChaosConfig;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;

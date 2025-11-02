@@ -3,7 +3,7 @@ package me.kall.livingchaos.event.deadrattle.types;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import me.kall.livingchaos.api.duck.ParentBear;
+import me.kall.livingchaos.api.ext.ParentBear;
 import me.kall.livingchaos.network.NetworkManager;
 import me.kall.livingchaos.network.packets.ParticlePacket;
 import net.minecraft.core.BlockPos;
