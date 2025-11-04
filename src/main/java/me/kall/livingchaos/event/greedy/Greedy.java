@@ -2,6 +2,7 @@ package me.kall.livingchaos.event.greedy;
 
 import me.kall.livingchaos.api.EntityTracker;
 import me.kall.livingchaos.api.ext.Unpickable;
+import me.kall.livingchaos.config.ChaosConfig;
 import me.kall.livingchaos.init.ModTags;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -22,7 +23,7 @@ public class Greedy {
             int entityId = entity.getId();
             int centerX = chunk.x;
             int centerZ = chunk.z;
-            int radius = 3;
+            int radius = ChaosConfig.GREEDY_RADIUS.get();
             level.getServer().execute(() -> {
                 for (int x = centerX - radius; x <= centerX + radius; x++) {
                     for (int z = centerZ - radius; z <= centerZ + radius; z++) {

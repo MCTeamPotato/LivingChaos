@@ -9,16 +9,16 @@ import me.kall.livingchaos.event.deadrattle.types.Rubbish;
 import me.kall.livingchaos.event.deathlock.DeathLock;
 import me.kall.livingchaos.event.deathlock.DeathLockClient;
 import me.kall.livingchaos.event.effectmirror.EffectMirror;
+import me.kall.livingchaos.event.expsteal.ExpSteal;
 import me.kall.livingchaos.event.greedy.Greedy;
 import me.kall.livingchaos.event.multishoot.MultiShoot;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.loading.FMLLoader;
-import org.jetbrains.annotations.NotNull;
 
 public class ModEvents {
-    public static void register(IEventBus forgeBus, @NotNull IEventBus modBus) {
-        EntityTracker.register(forgeBus);
+    public static void register(IEventBus forgeBus) {
+        EntityTracker.register();
         DeathLock.register(forgeBus);
 
         forgeBus.addListener(EventPriority.LOWEST, ResistanceReduction::onLivingDamage);
@@ -32,6 +32,8 @@ public class ModEvents {
         forgeBus.addListener(Greedy::onItemPick);
         forgeBus.addListener(EventPriority.LOWEST, Greedy::onLivingTick);
         forgeBus.addListener(Rubbish::setup);
+        forgeBus.addListener(EventPriority.LOWEST, ExpSteal::onLivingDeath);
+        forgeBus.addListener(EventPriority.LOWEST, ExpSteal::onPlayerHurt);
 
         if (FMLLoader.getDist().isClient()) {
             forgeBus.addListener(DeathLockClient::renderTotem);

@@ -23,7 +23,7 @@ public final class LivingChaos {
         IEventBus modBus = context.getModEventBus();
         NetworkManager.register();
         ModEffects.register(modBus);
-        ModEvents.register(MinecraftForge.EVENT_BUS, modBus);
+        ModEvents.register(MinecraftForge.EVENT_BUS);
         context.registerConfig(ModConfig.Type.COMMON, ChaosConfig.INSTANCE);
     }
 }

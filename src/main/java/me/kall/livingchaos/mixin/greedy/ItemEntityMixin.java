@@ -46,6 +46,7 @@ public abstract class ItemEntityMixin extends Entity implements Unpickable {
     @Inject(method = "tick", at = @At(value = "FIELD", target = "Lnet/minecraft/world/level/Level;isClientSide:Z"))
     private void onTick(CallbackInfo ci) {
         Greedy.validateOwner((ItemEntity) (Object)this, this);
+        this.setGlowingTag(true);
     }
 
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))

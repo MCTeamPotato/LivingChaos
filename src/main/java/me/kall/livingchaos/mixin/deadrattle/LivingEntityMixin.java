@@ -7,6 +7,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -23,7 +24,7 @@ public abstract class LivingEntityMixin extends Entity implements Exploder, Pare
     }
 
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
-    private void read(CompoundTag compound, CallbackInfo ci) {
+    private void read(@NotNull CompoundTag compound, CallbackInfo ci) {
         this.chaos$setExploder(compound.getBoolean("IsExploder"));
         this.chaos$setExplodeRadius(compound.getInt("ExplodeRadius"));
         this.chaos$setDeliverRadius(compound.getInt("ExploderDeliveryRadius"));
@@ -32,7 +33,7 @@ public abstract class LivingEntityMixin extends Entity implements Exploder, Pare
     }
 
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
-    private void write(CompoundTag compound, CallbackInfo ci) {
+    private void write(@NotNull CompoundTag compound, CallbackInfo ci) {
         compound.putBoolean("IsExploder", this.chaos$isExploder());
         compound.putInt("ExplodeRadius", this.chaos$explodeRadius());
         compound.putInt("ExploderDeliveryRadius", this.chaos$deliverRadius());

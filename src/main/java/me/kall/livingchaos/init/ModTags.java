@@ -13,6 +13,7 @@ public class ModTags {
     public static final TagKey<EntityType<?>> MULTI_SHOOT = init("multi_shoot");
     public static final TagKey<EntityType<?>> DEAD_RATTLE = init("dead_rattle");
     public static final TagKey<EntityType<?>> GREEDY = init("greedy");
+    public static final TagKey<EntityType<?>> EXP_STEAL = init("exp_steal");
 
     private static @NotNull TagKey<EntityType<?>> init(String name) {
         return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(LivingChaos.MOD_ID, name));

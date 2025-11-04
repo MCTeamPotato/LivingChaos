@@ -14,6 +14,7 @@ public class ChaosConfig {
     public static final ForgeConfigSpec INSTANCE;
     public static final ForgeConfigSpec.IntValue DEATH_LOCK_SECONDS, MULTI_SHOOT_INTERVAL, MULTI_SHOOT_MIN_COUNT, MULTI_SHOOT_MAX_COUNT, MULTI_SHOOT_COOL_DOWN;
     public static final ForgeConfigSpec.IntValue EXPLOSIVE_DELIVERY_LIMIT, STRENGTH_RADIUS;
+    public static final ForgeConfigSpec.IntValue GREEDY_RADIUS;
 
     static {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
@@ -25,7 +26,10 @@ public class ChaosConfig {
         MULTI_SHOOT_COOL_DOWN = builder.comment("After multi-shoot is triggered, the shooter will no longer trigger it again during this cooldown period.").defineInRange("MultiShootCoolDownSeconds", 5, 0, Integer.MAX_VALUE);
         builder.push("Dead Rattle");
         EXPLOSIVE_DELIVERY_LIMIT = builder.comment("The count of exploder property delivery towards other entities will not go beyond this limit.").defineInRange("ExploderDeliveryMaxCount", 10, 0, Integer.MAX_VALUE);
-        STRENGTH_RADIUS = builder.comment("The distribution of speed and strength potion effect in nearby chunks will not go beyond this radius.", "Do note that this radius means the extended chunks count from the center chunk, so 1 means 3*3=9 chunks, and if you only want the entity's current chunk to be affected, you need to write 0 here.").defineInRange("StrengthDistributionAroundChunkRadius", 1, 0, Integer.MAX_VALUE);
+        STRENGTH_RADIUS = builder.comment("The distribution of speed and strength potion effect in nearby chunks will not expand beyond this radius.", "Do note that this radius means the extended chunks count from the center chunk, so 1 means 3*3=9 chunks, and if you only want the entity's current chunk to be affected, you need to write 0 here.").defineInRange("StrengthDistributionAroundChunkRadius", 1, 0, Integer.MAX_VALUE);
+        builder.pop();
+        builder.push("Greedy");
+        GREEDY_RADIUS = builder.comment("The items absorption radius of greedy entities will not expand beyond this radius.", "Do note that this radius means the extended chunks count from the center chunk, so 1 means 3*3=9 chunks, and if you only want the entity's current chunk to be affected, you need to write 0 here.").defineInRange("GreedyAroundChunkRadius", 0, 0, Integer.MAX_VALUE);
         builder.pop();
         builder.pop();
         INSTANCE = builder.build();
